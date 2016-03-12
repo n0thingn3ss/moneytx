@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint --ext .js .",
-    "start": "node start",
     "test": "jenkins-mocha tests/*/*.js"
   },
   "repository": {
@@ -14,11 +13,7 @@
   },
   "author": "Karthik",
   "dependencies": {
-    "async": "^1.5.2",
-    "cookie-parser": "^1.4.1",
-    "debug": "^2.2.0",
-    "express": "^4.13.4",
-    "express-busboy": "^2.4.5"
+    "express": "^4.13.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -30,10 +25,9 @@
     "jenkins-mocha": "^2.5.0",
     "load-grunt-tasks": "^3.4.1",
     "mocha": "^2.4.5",
-    "mockery": "^1.4.0",
-    "pre-commit": "^1.0.0"
+    "mockery": "^1.4.0"
   },
   "precommit": [
-      "lint"
+    "lint"
   ]
 }
