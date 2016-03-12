@@ -1,23 +1,38 @@
-'use strict';
+var http = require( "http" );
+var controller = require( "./lib/controller.js" );
 
-var express = require('express');
-var app = express();
+var server = http.createServer(
+    function (req, res){
+        controller.on(
+            "data",
+            function( data ){
+                res.writeHead(
+                    200,
+                    { "Content-Type": "application/json" }
+                );
 
-var data = require('./data/transactions.json');
+                res.write(JSON.stringify(data));
+                res.end();
+            }
+        );
 
-// enable CORS
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Max-Age', 7200);
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
+        controller.on(
+            "error",
+            function( error ){
+                // Express/Touchdown
+                res.writeHead(
+                    error.type,
+                    { "Content-Type": "application/json" }
+                );
 
-app.get('/transactions', function(req, res, next) {
-    res.setHeader('Content-Type', 'application/json');
-    res.json(data);
-});
+                res.write(JSON.stringify(error.data)); // React
+                res.end();
+            }
+        );
 
-app.listen(4080);
-console.log('Started listening on port 4080');
+        controller.handle(req, res);
+    }
+);
+
+server.listen(4080);
+console.log( "Server is running on 4080" );
