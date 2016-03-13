@@ -1,0 +1,35 @@
+<div id='content'>
+    <form action='send-money' method='post'>
+        <label>To:
+            <input
+                type='email'
+                name='email'
+                placeholder='to email address'
+                required />
+            <span></span>
+        </label>
+        <label>
+            Amount: <input type="number" name="amount" placeholder='amount' min="1" step="any" />
+            <select name='currency'>
+                <option value='usd'>USD</option>
+                <option value='eur'>EUR</option>
+                <option value='jpy'>JPY</option>
+            </select>
+        </label>
+        <label>Message (optional):
+            <textarea rows='3'></textarea>
+        </label>
+        <label>
+            What's this payment for?
+            <select name='reason'>
+                <option value='family'>I'm sending money to family or friends</option>
+                <option value='goods'>I'm paying for goods or servives</option>
+            </select>
+        </label>
+        <input type='submit' />
+    </form>
+</div>
+<footer>
+    <button id='clr'>Clear</button>
+    <button id='submit'>Next</button>
+</footer>
