@@ -1,5 +1,5 @@
 <div id='content'>
-    <form action='send-money' method='post'>
+    <form action='/send-money' method='post' id='send-money-form'>
         <label>To:
             <input
                 type='email'
@@ -9,8 +9,9 @@
             <span></span>
         </label>
         <label>
-            Amount: <input type="number" name="amount" placeholder='amount' min="1" step="any" />
-            <select name='currency'>
+            Amount: <span id='currency-symbol'>$</span>
+            <input type="number" name="amount" placeholder='amount' min="1" required />
+            <select name='currency-selector'>
                 <option value='usd'>USD</option>
                 <option value='eur'>EUR</option>
                 <option value='jpy'>JPY</option>
@@ -26,10 +27,14 @@
                 <option value='goods'>I'm paying for goods or servives</option>
             </select>
         </label>
-        <input type='submit' />
     </form>
 </div>
 <footer>
-    <button id='clr'>Clear</button>
-    <button id='submit'>Next</button>
+    <div>
+        <button id='clr'>Clear</button>
+        <button id='submit'>Next</button>
+    </div>
 </footer>
+
+<!-- JS -->
+<script src='js/send-money.js'></script>
