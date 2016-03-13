@@ -1,17 +1,12 @@
 {
   "name": "moneytx",
   "version": "0.0.1",
-  "description": "Money Tx application",
+  "description": "Money Tx BE",
   "main": "server.js",
   "scripts": {
     "lint": "eslint --ext .js .",
     "test": "jenkins-mocha tests/*/*.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/n0thingn3ss/moneytx.git"
-  },
-  "author": "Karthik",
   "dependencies": {
   },
   "devDependencies": {
@@ -28,5 +23,6 @@
   },
   "precommit": [
     "lint"
-  ]
+  ],
+  "licence": "ISC"
 }
