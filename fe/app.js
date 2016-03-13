@@ -20,6 +20,7 @@ app.set('view engine', 'handlebars');
 
 router.get('/', function(req, res, next) {
     res.render('index', {
+        page: 'index',
         title: 'What are we Doing?'
     });
 });

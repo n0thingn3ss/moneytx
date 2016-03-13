@@ -2,18 +2,20 @@
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{title}}</title>
 
     <!-- STYLES -->
-    <link rel='stylesheet' href='css/index.css'>
-
-    <!-- JS -->
-    <script src='js/index.js'></script>
-
+    <link rel='stylesheet' href='css/normalize.min.css'>
+    <link rel='stylesheet' href='css/main.css'>
 </head>
-<body>
-    {{> header}}
 
+<body id={{page}}>
+    {{> header}}
     {{{body}}}
 </body>
+
+<!-- JS -->
+<script src='js/main.js'></script>
+
 </html>
