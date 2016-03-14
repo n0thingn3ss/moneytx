@@ -1,7 +1,9 @@
 <ul>
 {{#each transactions}}
-    <li transaction-id={{id}}>
-        {{name}}
+    <li data-tid={{id}}>
+        <span class='date'>{{date}}</span>
+        <span class='name'>{{name}}</span>
+        <span class='amount'>{{amount.value}}</span>
     </li>
 {{/each}}
 </ul>

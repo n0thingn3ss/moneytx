@@ -22,6 +22,7 @@ h1 {
 }
 #content {
     margin: 20px;
+    margin-bottom: 60px;
 }
 a, button {
     background: linear-gradient(#FBFBFB, #B9B8B8);
@@ -82,7 +83,7 @@ input {
 input:invalid {
     border: 1px solid red;
 }
-input[type=number] {
+input[type=text] {
     width: 45%;
 }
 input[type=email] {
@@ -102,4 +103,17 @@ input[type=email]:valid + span {
 }
 textarea {
     width: 95%;
+}
+
+/* View Transaction */
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+    margin: 10px 0;
+}
+li span {
+    display: inline-block;
+    width: 30%;
 }

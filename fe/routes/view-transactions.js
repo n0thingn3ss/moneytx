@@ -5,20 +5,19 @@ module.exports = function viewTransactions(req, res, next) {
         host: 'localhost',
         port: 4080,
         path: '/transactions'
-    }, function(response) {
-        // Continuously update stream with data
-        var transactions = '';
-        response.on('data', function(d) {
-            transactions += d;
+    }, function (apiResponse) {
+
+        var data = '';
+        apiResponse.on('data', function(d) {
+            data += d;
         });
 
-        response.on('end', function() {
-            // Data reception is done, do whatever with it!
-            transactions = JSON.parse(transactions);
+        apiResponse.on('end', function() {
+            data = JSON.parse(data);
             res.render('view-transactions', {
                 page: 'view-transactions',
                 title: 'Transaction History',
-                transactions: transactions
+                transactions: data.transactions
             });
         });
     });

@@ -1,8 +1,8 @@
 var http = require( "http" );
-var controller = require( "./lib/controller.js" );
 
 var server = http.createServer(
     function (req, res){
+        var controller = require( "./lib/controller.js" );
         controller.on(
             "data",
             function( data ){
