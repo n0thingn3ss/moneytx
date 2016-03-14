@@ -3,14 +3,16 @@ var http = require( "http" );
 var server = http.createServer(
     function (req, res){
         var controller = require( "./lib/controller.js" );
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Max-Age', 7200);
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Content-Type', 'application/json');
+
         controller.on(
             "data",
             function( data ){
-                res.writeHead(
-                    200,
-                    { "Content-Type": "application/json" }
-                );
-
+                res.statusCode = 200;
                 res.write(JSON.stringify(data));
                 res.end();
             }
@@ -19,13 +21,9 @@ var server = http.createServer(
         controller.on(
             "error",
             function( error ){
-                // Express/Touchdown
-                res.writeHead(
-                    error.type,
-                    { "Content-Type": "application/json" }
-                );
+                res.statusCode = error.type;
 
-                res.write(JSON.stringify(error.data)); // React
+                res.write(JSON.stringify(error.data));
                 res.end();
             }
         );
