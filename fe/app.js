@@ -32,6 +32,7 @@ router.get('/send-money', function(req, res, next) {
 });
 
 router.post('/send-money', function(req, res, next) {
+    console.dir(req.body);
     setTimeout(function () {
         res.writeHead(200, {
             "Content-Type": "application/json"
