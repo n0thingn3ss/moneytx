@@ -5,21 +5,15 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint --ext .js .",
-    "test": "jenkins-mocha tests/*/*.js"
+    "start": "node server.js"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^5.2.0",
     "eslint": "^1.10.3",
     "eslint-config-eslint": "^3.0.0",
     "grunt": "^0.4.5",
-    "grunt-hash": "^0.5.0",
-    "jenkins-mocha": "^2.5.0",
-    "load-grunt-tasks": "^3.4.1",
-    "mocha": "^2.4.5",
-    "mockery": "^1.4.0"
+    "load-grunt-tasks": "^3.4.1"
   },
   "precommit": [
     "lint"
