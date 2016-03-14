@@ -15,7 +15,6 @@ controller.handle = function (req, res){
     for (var key in routes) {
         if (match = url.pathname.match(routes[key])) {
             routeName = key;
-
         }
     }
 

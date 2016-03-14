@@ -7,6 +7,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var router = express.Router();
 
+
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
@@ -32,21 +33,20 @@ router.get('/send-money', function(req, res, next) {
 });
 
 router.post('/send-money', function(req, res, next) {
-    console.dir(req.body);
     setTimeout(function () {
         res.writeHead(200, {
             "Content-Type": "application/json"
         });
-        res.write('money-sent');
+        res.write(JSON.stringify({
+            'res': 'money-sent'
+        }));
         res.end();
-    }, 3000);
+    }, 2000);
 });
 
 router.get('/view-transactions', function(req, res, next) {
-    res.render('view-transactions', {
-        page: 'view-transactions',
-        title: 'Transaction History'
-    });
+    var viewTransactions = require('./routes/view-transactions');
+    viewTransactions(req, res, next);
 });
 
 app.use('/', router);

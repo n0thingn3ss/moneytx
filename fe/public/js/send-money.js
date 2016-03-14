@@ -34,21 +34,27 @@ function postTransaction(e) {
 
         loading.style.display = 'block';
 
-        var xhrTodoPost = new XMLHttpRequest();
-        xhrTodoPost.open('post', '/send-money');
-        xhrTodoPost.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhrTodoPost.send('email=' + smForm.email.value +
+        var xhrMoneyPost = new XMLHttpRequest();
+        xhrMoneyPost.open('post', '/send-money');
+        xhrMoneyPost.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhrMoneyPost.send('email=' + smForm.email.value +
             '&name=' + smForm.name.value +
             '$currency=' + currencySelector.options[currencySelector.selectedIndex].value +
             '&msg=' + smForm.msg.value +
             '&reason=' + smForm.reason.options[smForm.reason.selectedIndex].value);
 
-        xhrTodoPost.onreadystatechange = function() {
-            if (xhrTodoPost.readyState == 4 && xhrTodoPost.status==200) {
-                console.log(xhrTodoPost.responseText);
+        xhrMoneyPost.onreadystatechange = function() {
+            if (xhrMoneyPost.readyState == 4) {
                 loading.style.display = 'none';
-                document.querySelector('#content').innerHTML='Done';
-                document.querySelector('footer').innerHTML='';
+
+                if(xhrMoneyPost.status == 200) {
+                    console.dir(JSON.parse(xhrMoneyPost.responseText));
+                    document.querySelector('#content').innerHTML='Done';
+                    document.querySelector('footer').innerHTML='';
+                } else {
+
+                    console.log('req failed');
+                }
             }
         }
     }
