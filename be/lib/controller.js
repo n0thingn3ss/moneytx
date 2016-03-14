@@ -40,7 +40,7 @@ controller.handle = function (req, res){
                 response.b = '';
             }
         } else {
-            response.transactions = transactions.splice(b - 1, n);
+            response.transactions = transactions.slice(b - 1, n);
         }
 
         controller.emit("data", response);
